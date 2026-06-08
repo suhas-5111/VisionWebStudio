@@ -8,7 +8,7 @@ const PUBLIC_KEY  = import.meta.env.VITE_EMAILJS_PUBLIC_KEY  as string;
 
 const Contact: React.FC = () => {
   const ref = useScrollReveal();
-  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
+  const [formData, setFormData] = useState({ name: '', email: '', mobile: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending]   = useState(false);
   const [error, setError]       = useState('');
@@ -30,13 +30,14 @@ const Contact: React.FC = () => {
         {
           from_name: formData.name,
           reply_to:  formData.email,
+          mobile_number: formData.mobile,
           message:   formData.message,
         },
         PUBLIC_KEY
       );
       console.log('EmailJS Success Response:', response);
       setSubmitted(true);
-      setFormData({ name: '', email: '', message: '' });
+      setFormData({ name: '', email: '', mobile: '', message: '' });
       setTimeout(() => setSubmitted(false), 5000);
     } catch (err) {
       console.error('EmailJS Error Object:', err);
@@ -195,6 +196,29 @@ const Contact: React.FC = () => {
                 </div>
                 <div>
                   <label
+                    htmlFor="contact-mobile"
+                    className="block text-[13px] font-medium mb-2"
+                    style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-body)' }}
+                  >
+                    Mobile Number
+                  </label>
+                  <input
+                    id="contact-mobile"
+                    type="tel"
+                    placeholder="+91 98765 43210"
+                    value={formData.mobile}
+                    onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
+                    className="w-full px-4 py-3 rounded-xl text-[15px] outline-none transition-all duration-300 placeholder:text-white/20 focus:border-indigo-500/60"
+                    style={{
+                      background: 'rgba(255,255,255,0.05)',
+                      border: '1px solid rgba(255,255,255,0.1)',
+                      color: '#fff',
+                      fontFamily: 'var(--font-body)',
+                    }}
+                  />
+                </div>
+                <div>
+                  <label
                     htmlFor="contact-message"
                     className="block text-[13px] font-medium mb-2"
                     style={{ color: 'rgba(255,255,255,0.5)', fontFamily: 'var(--font-body)' }}
@@ -247,7 +271,78 @@ const Contact: React.FC = () => {
 
           {/* Contact Info */}
           <div className="lg:col-span-2 flex flex-col gap-5">
+
+            {/* Owner */}
+            <div
+              className="flex items-start gap-4 p-5 rounded-2xl"
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.08)',
+              }}
+            >
+              <div
+                className="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center"
+                style={{ background: 'rgba(99,102,241,0.15)' }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                  <circle cx="12" cy="7" r="4" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-[12px] font-medium uppercase tracking-widest mb-1" style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)' }}>Owner</div>
+                <div className="text-[15px] font-medium" style={{ color: '#fff', fontFamily: 'var(--font-body)' }}>Suhas Chougla</div>
+              </div>
+            </div>
+
+            {/* Address */}
+            <div
+              className="flex items-start gap-4 p-5 rounded-2xl"
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.08)',
+              }}
+            >
+              <div
+                className="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center"
+                style={{ background: 'rgba(99,102,241,0.15)' }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366f1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-[12px] font-medium uppercase tracking-widest mb-1" style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)' }}>Address</div>
+                <div className="text-[15px] font-medium" style={{ color: '#fff', fontFamily: 'var(--font-body)' }}>Bengaluru, Karnataka, India</div>
+              </div>
+            </div>
+
             {/* Email */}
+            <a
+              href="mailto:suhaschougla@gmail.com"
+              className="group flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.3)]"
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.08)',
+              }}
+            >
+              <div
+                className="flex-shrink-0 w-11 h-11 rounded-xl flex items-center justify-center"
+                style={{ background: 'rgba(99,102,241,0.15)' }}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6366f1" strokeWidth="2" strokeLinecap="round">
+                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                  <polyline points="22,6 12,13 2,6" />
+                </svg>
+              </div>
+              <div>
+                <div className="text-[12px] font-medium uppercase tracking-widest mb-1" style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)' }}>Email</div>
+                <div className="text-[15px] font-medium" style={{ color: '#fff', fontFamily: 'var(--font-body)' }}>suhaschougla@gmail.com</div>
+              </div>
+            </a>
+
+            {/* Official Email */}
             <a
               href="mailto:officialvisionweb@gmail.com"
               className="group flex items-start gap-4 p-5 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_40px_rgba(0,0,0,0.3)]"
@@ -266,7 +361,7 @@ const Contact: React.FC = () => {
                 </svg>
               </div>
               <div>
-                <div className="text-[12px] font-medium uppercase tracking-widest mb-1" style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)' }}>Email</div>
+                <div className="text-[12px] font-medium uppercase tracking-widest mb-1" style={{ color: 'rgba(255,255,255,0.4)', fontFamily: 'var(--font-body)' }}>Official Email</div>
                 <div className="text-[15px] font-medium" style={{ color: '#fff', fontFamily: 'var(--font-body)' }}>officialvisionweb@gmail.com</div>
               </div>
             </a>

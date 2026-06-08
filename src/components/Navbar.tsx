@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import logo from '../assets/logo.png';
 
 const NAV_LINKS = [
   { label: 'Home', href: '#home' },
@@ -74,7 +75,11 @@ const Navbar: React.FC = () => {
             className="flex items-center gap-2 group"
             aria-label="Vision Web Studio Home"
           >
-            <SparkleIcon />
+            <img
+              src={logo}
+              alt="Vision Web Studio Logo"
+              style={{ height: '38px', width: 'auto', objectFit: 'contain' }}
+            />
             <span
               style={{
                 fontFamily: 'var(--font-heading)',

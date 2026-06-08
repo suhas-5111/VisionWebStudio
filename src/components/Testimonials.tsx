@@ -4,33 +4,33 @@ import { useScrollReveal } from '../hooks/useScrollReveal';
 const TESTIMONIALS = [
   {
     id: 1,
-    quote:
-      "Vision Web Studio completely transformed our online presence. Our new website brought in 3x more inquiries within the first month. The design is stunning and our customers love it.",
-    name: 'Sarah Mitchell',
+    quote: "Got our website done quickly. Clean design, easy to navigate. Customers have been giving good feedback since we launched.",
+    name: 'Rahul Sharma',
     role: 'Owner',
-    company: 'Nova Café',
-    avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&auto=format',
-    rating: 5,
+    company: 'Sharma Electronics',
+    initials: 'RS',
+    color: '#6366f1',
+    rating: 4,
   },
   {
     id: 2,
-    quote:
-      "Working with Vision Web Studio was effortless. They understood our brand immediately and delivered a premium fitness landing page that converts like crazy. Highly professional team.",
-    name: 'James Okonkwo',
+    quote: "Decent experience. The site looks professional and works well on mobile too. A few back-and-forths but overall happy with the final result.",
+    name: 'Anita Kulkarni',
     role: 'Founder',
-    company: 'FitCore Gym',
-    avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&auto=format',
-    rating: 5,
+    company: 'AK Boutique',
+    initials: 'AK',
+    color: '#0ea5e9',
+    rating: 3,
   },
   {
     id: 3,
-    quote:
-      "The team at Vision Web Studio delivered beyond expectations. Our salon's website now feels luxury and modern. Bookings have increased significantly since launch. Outstanding work.",
-    name: 'Priya Nair',
+    quote: "They built our gym's landing page within the timeline. Looks modern and we've started getting online inquiries. Would recommend for small businesses.",
+    name: 'Vikram Desai',
     role: 'Director',
-    company: 'Bloom Beauty',
-    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&auto=format',
-    rating: 5,
+    company: 'FitZone Gym',
+    initials: 'VD',
+    color: '#10b981',
+    rating: 4,
   },
 ];
 
@@ -138,12 +138,12 @@ const Testimonials: React.FC = () => {
 
               {/* Author */}
               <div className="flex items-center gap-3">
-                <img
-                  src={t.avatar}
-                  alt={t.name}
-                  className="w-10 h-10 rounded-full object-cover"
-                  loading="lazy"
-                />
+                <div
+                  className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                  style={{ background: t.color, color: '#fff', fontWeight: 700, fontSize: '14px', fontFamily: 'var(--font-heading)' }}
+                >
+                  {t.initials}
+                </div>
                 <div>
                   <div
                     className="text-[14px] font-semibold"
