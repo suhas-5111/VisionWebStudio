@@ -9,22 +9,7 @@ const NAV_LINKS = [
   { label: 'Contact', href: '#contact' },
 ];
 
-const SparkleIcon = () => (
-  <svg
-    width="18"
-    height="18"
-    viewBox="0 0 24 24"
-    fill="none"
-    className="inline-block"
-    aria-hidden="true"
-  >
-    <path
-      d="M12 2L13.5 9.5L21 11L13.5 12.5L12 20L10.5 12.5L3 11L10.5 9.5L12 2Z"
-      fill="currentColor"
-      className="text-indigo-400"
-    />
-  </svg>
-);
+
 
 const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
